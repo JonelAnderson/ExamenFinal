@@ -1,0 +1,36 @@
+@startuml
+class models.Elector{
+nombre:string
+dni:string
+correo:string
+password:string
+}
+class models.Candidato{
+nombre:string
+partido:string
+}
+class models.Cabina{
+fecha_hora:dateTime
+codigo:string
+location:string
+}
+class models.Voto{
+cantidad_voto:integer
+}
+
+models.Elector "1" *-- "1" models.Voto
+models.Elector "*" *-- "1" models.Cabina
+models.Elector "*" -- "1" models.Candidato
+
+
+class controllers.CandidatoController{
+list()
+store()
+delete()
+}
+class controllers.ElectorController{
+list()
+store()
+delete()
+}
+@enduml
